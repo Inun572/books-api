@@ -13,14 +13,13 @@ const getBooks = () => {
 
 const getBookById = (id) => {
   const query = `SELECT * FROM books WHERE id = ${id}`;
-  const result = db.query(query, (err, result) => {
+  db.query(query, (err, result) => {
     if (err) {
       throw err;
     }
 
-    return result;
+    return result[0];
   });
-  return result;
 };
 
 module.exports = {
