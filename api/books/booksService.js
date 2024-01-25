@@ -1,26 +1,20 @@
 const db = require('../../dbConfig.js');
 
-const getBooks = () => {
+const getBooks = async () => {
   const query = `SELECT * FROM books`;
-  return db.query(query, (err, result) => {
-    if (err) {
-      throw err;
-    }
+  const [data] = await db.query(query);
 
-    return result;
-  });
+  return data;
 };
 
-const getBookById = (id) => {
+const getBookById = async (id) => {
   const query = `SELECT * FROM books WHERE id = ${id}`;
-  db.query(query, (err, result) => {
-    if (err) {
-      throw err;
-    }
+  const [data] = await db.query(query);
 
-    return result[0];
-  });
+  return data[0];
 };
+
+const addNewBook = async () => {};
 
 module.exports = {
   getBooks,
