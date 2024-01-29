@@ -5,10 +5,12 @@ const app = express();
 
 app.use(express.json());
 
-app.use(router);
+app.use('/v1', router);
 
 app.get('/', (req, res) => {
-  res.send('Hello World');
+  res.json({
+    message: 'Try /v1/books to get all books',
+  });
 });
 
 module.exports = app;

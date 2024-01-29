@@ -1,4 +1,4 @@
-const db = require('../../dbConfig');
+const db = require('../config/dbConfig');
 const { getBooks, getBookById } = require('./booksService');
 
 const booksController = {
