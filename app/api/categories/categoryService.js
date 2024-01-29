@@ -1,20 +1,5 @@
-const db = require('../../config/dbConfig');
+const BaseService = require('../services/baseService');
 
-class Categories {
-  async getCategories() {
-    const [data] = await db.query(
-      'SELECT * FROM categories'
-    );
-    return data;
-  }
+class Categories extends BaseService {}
 
-  async getCategoryById(id) {
-    const [data] = await db.query(
-      'SELECT * FROM categories WHERE id = ?',
-      [id]
-    );
-    return data[0];
-  }
-}
-
-module.exports = new Categories();
+module.exports = new Categories('categories');

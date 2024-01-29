@@ -5,7 +5,7 @@ const publishersController = {
     try {
       const publishersId = Number(req.params.id);
 
-      if (publishersId) {
+      if (req.params.id) {
         if (Object.is(publishersId, NaN)) {
           return res.status(400).json({
             message: 'Invalid publisher id',
@@ -16,11 +16,16 @@ const publishersController = {
           publishersId
         );
 
-        if (data.length === 0) {
+        if (!data) {
           return res.status(404).json({
             message: 'Publisher not found',
           });
         }
+
+        return res.json({
+          message: 'success',
+          data,
+        });
       }
 
       const data = await publishersService.get();

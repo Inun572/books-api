@@ -1,7 +1,4 @@
-const {
-  getCategories,
-  getCategoryById,
-} = require('./categoryService');
+const categoriesService = require('./categoryService');
 
 const categoryController = {
   getCategories: async (req, res) => {
@@ -14,9 +11,11 @@ const categoryController = {
             message: 'Invalid category id',
           });
         }
-        const data = await getCategoryById(categoryId);
+        const data = await categoriesService.find(
+          categoryId
+        );
 
-        if (data.length === 0) {
+        if (!data) {
           return res.status(404).json({
             message: 'Category not found',
           });
@@ -28,7 +27,7 @@ const categoryController = {
         });
       }
 
-      const data = await getCategories();
+      const data = await categoriesService.get();
 
       return res.json({
         message: 'success',
