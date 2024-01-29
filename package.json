@@ -10,7 +10,9 @@
   "name": "books-api",
   "version": "1.0.0",
   "main": "app.js",
-  "devDependencies": {},
+  "devDependencies": {
+    "@faker-js/faker": "^8.4.0"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
