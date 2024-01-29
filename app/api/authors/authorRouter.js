@@ -1,4 +1,5 @@
 const { Router } = require('express');
+const { getAuthors } = require('./authorController.js');
 
 const router = Router();
 
