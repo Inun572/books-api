@@ -8,7 +8,7 @@ const authorController = {
     try {
       const authorId = Number(req.params.id);
 
-      if (authorId) {
+      if (req.params.id) {
         if (Object.is(authorId, NaN)) {
           return res.status(400).json({
             message: 'Invalid author id',
@@ -16,6 +16,12 @@ const authorController = {
         }
 
         const data = await getAuthorById(authorId);
+
+        if (!data) {
+          return res.status(404).json({
+            message: 'Author not found',
+          });
+        }
         return res.json({
           message: 'success',
           data,
